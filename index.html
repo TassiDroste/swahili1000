@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="vocab.js"></script>
 <style>
-:root{--green:#0d9488;--green-light:#f0fdfa;--green-dark:#0f766e;--amber:#f59e0b;--amber-light:#fef3c7;--red:#ef4444;--red-light:#fee2e2;--bg:#fafaf9;--surface:#ffffff;--surface2:#f5f5f4;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);--text:#1c1917;--text2:#78716c;--text3:#a8a29e;--radius:14px;--radius-sm:8px;--shadow:0 2px 12px rgba(0,0,0,0.07);}
+:root{--green:#0d9488;--green-light:#f0fdfa;--green-dark:#0f766e;--amber:#f59e0b;--amber-light:#fef3c7;--red:#ef4444;--red-light:#fee2e2;--purple:#7c3aed;--purple-light:#f5f3ff;--bg:#fafaf9;--surface:#ffffff;--surface2:#f5f5f4;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);--text:#1c1917;--text2:#78716c;--text3:#a8a29e;--radius:14px;--radius-sm:8px;--shadow:0 2px 12px rgba(0,0,0,0.07);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 .header{background:var(--surface);border-bottom:1px solid var(--border);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
 .logo{display:flex;align-items:center;gap:12px;}
 .logo-flags{display:flex;gap:4px;}
 .flag{width:22px;height:15px;border-radius:3px;overflow:hidden;display:flex;flex-direction:column;}
-.ke-g{flex:1;background:#006600;}.ke-w{flex:1;background:#ffffff;}.ke-r{flex:1;background:#cc0000;}
+.ke-g{flex:1;background:#006600;}.ke-w{flex:1;background:#fff;}.ke-r{flex:1;background:#cc0000;}
 .tz-g{flex:1;background:#1EB53A;}.tz-y{flex:1;background:#FCD116;}.tz-b{flex:1;background:#00A3DD;}
 .logo-name{font-family:'Fraunces',serif;font-size:22px;font-weight:600;letter-spacing:-.5px;}
 .logo-name span{color:var(--green);}
@@ -27,6 +27,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .cat-btn{display:flex;align-items:center;gap:10px;width:100%;padding:.6rem 1.2rem;border:none;background:none;cursor:pointer;font-size:13.5px;color:var(--text2);text-align:left;transition:background .15s;font-family:'DM Sans',sans-serif;}
 .cat-btn:hover{background:var(--surface2);}
 .cat-btn.active{background:var(--green-light);color:var(--green-dark);font-weight:600;}
+.cat-btn.song-btn.active{background:var(--purple-light);color:var(--purple);}
 .cat-icon{font-size:15px;width:20px;flex-shrink:0;}
 .cat-count{margin-left:auto;font-size:11px;color:var(--text3);}
 .cat-btn.active .cat-count{color:var(--green);}
@@ -55,6 +56,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .audio-btn:hover{background:var(--surface2);}
 .learn-btn{border:1px solid var(--green);background:none;color:var(--green);}
 .learn-btn.done,.learn-btn:hover{background:var(--green);color:#fff;}
+/* QUIZ */
 .quiz-wrap{max-width:540px;margin:0 auto;}
 .quiz-pb{background:var(--surface2);border-radius:4px;height:5px;margin-bottom:1.5rem;overflow:hidden;}
 .quiz-pf{height:100%;background:var(--green);transition:width .3s;}
@@ -76,6 +78,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .complete h2{font-family:'Fraunces',serif;font-size:28px;margin-bottom:.5rem;}
 .complete p{color:var(--text2);margin-bottom:1.5rem;}
 .btn-green{padding:.65rem 1.8rem;background:var(--green);color:#fff;border:none;border-radius:20px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;}
+/* PAIRS */
 .pairs-wrap{max-width:680px;margin:0 auto;}
 .pairs-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;font-size:13px;color:var(--text2);}
 .pairs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -86,6 +89,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .pair-card.matched{border-color:var(--green);background:var(--green-light);color:var(--green-dark);cursor:default;opacity:.7;}
 .pair-card.wf{border-color:var(--red);background:var(--red-light);animation:shake .4s;}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+/* FILL */
 .fill-wrap{max-width:560px;margin:0 auto;}
 .fill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.2rem;}
 .fill-sent{font-size:18px;line-height:1.7;margin-bottom:1.5rem;text-align:center;}
@@ -96,6 +100,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .fill-opt.correct{background:#ccfbf1;border-color:#0d9488;color:#0f766e;}
 .fill-opt.wrong{background:var(--red-light);border-color:var(--red);color:#b91c1c;}
 .fill-hint{font-size:12px;color:var(--text3);text-align:center;margin-bottom:1rem;font-style:italic;}
+/* STORY */
 .story-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;}
 .story-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;cursor:pointer;transition:all .2s;}
 .story-card:hover{border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-2px);}
@@ -118,8 +123,55 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .gi{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .8rem;font-size:13px;}
 .gi .gl{font-weight:600;color:var(--green-dark);}
 .gi .ge{color:var(--text2);}
+/* SONGS */
+.songs-page{max-width:720px;margin:0 auto;}
+.song-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:2rem;}
+.song-pick-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;transition:all .2s;text-align:center;}
+.song-pick-card:hover{border-color:var(--purple);box-shadow:var(--shadow);transform:translateY(-2px);}
+.song-pick-card .sp-emoji{font-size:48px;margin-bottom:.75rem;}
+.song-pick-card .sp-title{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin-bottom:4px;}
+.song-pick-card .sp-theme{font-size:12px;color:var(--text2);margin-bottom:.5rem;}
+.song-pick-card .sp-badge{display:inline-block;background:var(--purple-light);color:var(--purple);font-size:11px;padding:3px 8px;border-radius:12px;font-weight:500;}
+.song-reader{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.song-header{background:linear-gradient(135deg,#0f766e,#0d9488);padding:2rem;color:#fff;position:relative;}
+.song-header h2{font-family:'Fraunces',serif;font-size:26px;font-weight:600;margin-bottom:4px;}
+.song-header .sh-theme{font-size:14px;opacity:.85;margin-bottom:1rem;}
+.song-controls{display:flex;gap:10px;flex-wrap:wrap;}
+.song-btn{padding:.5rem 1.1rem;border-radius:20px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .15s;border:none;}
+.song-btn-play{background:#fff;color:var(--green-dark);}
+.song-btn-play:hover{background:#f0fdfa;}
+.song-btn-stop{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.4);}
+.song-btn-stop:hover{background:rgba(255,255,255,.3);}
+.song-back{position:absolute;top:1rem;right:1rem;padding:5px 12px;border:1px solid rgba(255,255,255,.4);border-radius:20px;background:none;font-size:13px;cursor:pointer;color:#fff;font-family:'DM Sans',sans-serif;}
+.song-body{padding:1.5rem 2rem 2rem;}
+.song-section-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin:1.5rem 0 .5rem;display:flex;align-items:center;gap:8px;}
+.song-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.song-line{display:flex;gap:12px;align-items:flex-start;padding:.5rem .75rem;border-radius:var(--radius-sm);transition:background .2s;cursor:pointer;border:1px solid transparent;margin-bottom:4px;}
+.song-line:hover{background:var(--surface2);}
+.song-line.playing{background:var(--green-light);border-color:rgba(13,148,136,.2);}
+.line-num{font-size:11px;color:var(--text3);min-width:18px;margin-top:3px;}
+.line-play{width:28px;height:28px;border-radius:50%;border:1px solid var(--border2);background:none;cursor:pointer;font-size:11px;color:var(--text2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
+.song-line.playing .line-play{background:var(--green);border-color:var(--green);color:#fff;}
+.line-play:hover{border-color:var(--green);color:var(--green);}
+.line-content{flex:1;}
+.line-swahili{font-size:16px;font-weight:500;margin-bottom:2px;line-height:1.4;}
+.line-english{font-size:13px;color:var(--text2);line-height:1.4;}
+.line-words{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.word-chip{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:12px;cursor:pointer;transition:all .15s;}
+.word-chip:hover{background:var(--green-light);border-color:var(--green);color:var(--green-dark);}
+.word-chip.learned-chip{background:var(--green-light);border-color:var(--green);color:var(--green-dark);}
+.song-vocab{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+.song-vocab h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:1rem;}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;}
+.vocab-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .8rem;font-size:13px;cursor:pointer;transition:all .15s;}
+.vocab-chip:hover{border-color:var(--green);background:var(--green-light);}
+.vocab-chip.vc-learned{border-color:var(--green);background:var(--green-light);}
+.vc-sw{font-weight:600;color:var(--green-dark);}
+.vc-en{color:var(--text2);font-size:12px;}
+.playing-indicator{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .empty{text-align:center;padding:3rem;color:var(--text3);font-size:15px;}
-@media(max-width:650px){.sidebar{display:none;}.word-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}.pairs-grid{grid-template-columns:1fr;}.quiz-opts,.fill-opts{grid-template-columns:1fr;}.progress-bar{display:none;}.content{padding:1rem;}}
+@media(max-width:650px){.sidebar{display:none;}.word-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}.pairs-grid{grid-template-columns:1fr;}.quiz-opts,.fill-opts{grid-template-columns:1fr;}.progress-bar{display:none;}.content{padding:1rem;}.song-line{flex-direction:column;}.song-header{padding:1.5rem;}}
 </style>
 </head>
 <body>
@@ -154,7 +206,158 @@ var CATS=[
   {id:'places',label:'Places & Travel',icon:'🗺️'},
   {id:'culture',label:'Swahili Culture',icon:'🎭'},
   {id:'wildlife',label:'East African Wildlife',icon:'🐘'},
-  {id:'coast',label:'The Coast & Sea',icon:'🌊'}
+  {id:'coast',label:'The Coast & Sea',icon:'🌊'},
+  {id:'__songs__',label:'Songs',icon:'🎵',isSong:true}
+];
+
+var SONGS=[
+{
+  id:'habari',
+  title:'Habari Yako',
+  emoji:'👋',
+  theme:'Greetings & Everyday Life',
+  tempo:'Upbeat, medium tempo',
+  sections:[
+    {label:'Verse 1',lines:[
+      {sw:'Asubuhi nzuri, nakuamkia',en:'Beautiful morning, I greet you',words:['Asubuhi=Morning','nzuri=Beautiful/Good','nakuamkia=I greet you']},
+      {sw:'Habari yako, rafiki yangu?',en:'How are you, my friend?',words:['Habari=News/How are you','yako=your','rafiki=friend','yangu=my']},
+      {sw:'Sijambo, niko salama',en:'I am fine, I am safe',words:['Sijambo=I am fine','niko=I am','salama=safe/well']},
+      {sw:'Asante kwa swali lako',en:'Thank you for your question',words:['Asante=Thank you','kwa=for','swali=question','lako=your']}
+    ]},
+    {label:'Chorus',lines:[
+      {sw:'Habari yako, habari yako',en:'How are you, how are you',words:['Habari=News/How are you','yako=your']},
+      {sw:'Nzuri sana, nzuri sana',en:'Very good, very good',words:['Nzuri=Good/Fine','sana=very/a lot']},
+      {sw:'Tunafurahi kukuona',en:'We are happy to see you',words:['Tunafurahi=We are happy','kukuona=to see you']},
+      {sw:'Karibu, karibu sana',en:'Welcome, very welcome',words:['Karibu=Welcome','sana=very']}
+    ]},
+    {label:'Verse 2',lines:[
+      {sw:'Jina lako ni nani, ndugu?',en:'What is your name, friend?',words:['Jina=Name','lako=your','nani=who/what','ndugu=friend/sibling']},
+      {sw:'Unatoka nchi gani?',en:'Which country are you from?',words:['Unatoka=You come from','nchi=country','gani=which/what']},
+      {sw:'Ninakufurahi kukujua',en:'I am glad to know you',words:['Ninakufurahi=I am happy for you','kukujua=to know you']},
+      {sw:'Tutaonana tena kesho',en:'We will see each other again tomorrow',words:['Tutaonana=We will see each other','tena=again','kesho=tomorrow']}
+    ]},
+    {label:'Bridge',lines:[
+      {sw:'Hakuna matata, maisha ni mazuri',en:'No worries, life is good',words:['Hakuna matata=No worries','maisha=life','ni=is','mazuri=good/beautiful']},
+      {sw:'Pumzika vizuri, lala salama',en:'Rest well, sleep peacefully',words:['Pumzika=Rest','vizuri=well','lala=sleep','salama=peacefully']},
+      {sw:'Kwaheri rafiki, tunaipenda',en:'Goodbye friend, we love you',words:['Kwaheri=Goodbye','rafiki=friend','tunaipenda=we love it/you']}
+    ]},
+    {label:'Chorus',lines:[
+      {sw:'Habari yako, habari yako',en:'How are you, how are you',words:['Habari=News/How are you','yako=your']},
+      {sw:'Nzuri sana, nzuri sana',en:'Very good, very good',words:['Nzuri=Good/Fine','sana=very/a lot']},
+      {sw:'Tunafurahi kukuona',en:'We are happy to see you',words:['Tunafurahi=We are happy','kukuona=to see you']},
+      {sw:'Karibu, karibu sana',en:'Welcome, very welcome',words:['Karibu=Welcome','sana=very']}
+    ]}
+  ],
+  vocab:[
+    {sw:'Asubuhi',en:'Morning'},{sw:'Habari',en:'News / How are you?'},{sw:'Rafiki',en:'Friend'},
+    {sw:'Sijambo',en:'I am fine'},{sw:'Salama',en:'Safe / Peace'},{sw:'Asante',en:'Thank you'},
+    {sw:'Nzuri',en:'Good / Fine'},{sw:'Sana',en:'Very / A lot'},{sw:'Karibu',en:'Welcome'},
+    {sw:'Kwaheri',en:'Goodbye'},{sw:'Kesho',en:'Tomorrow'},{sw:'Maisha',en:'Life'},
+    {sw:'Furaha',en:'Happiness'},{sw:'Jina',en:'Name'},{sw:'Nchi',en:'Country'}
+  ]
+},
+{
+  id:'safari',
+  title:'Safari ya Maisha',
+  emoji:'🌍',
+  theme:'Life Journey — Verbs & Emotions',
+  tempo:'Gentle, soulful',
+  sections:[
+    {label:'Verse 1',lines:[
+      {sw:'Ninaamka asubuhi na moyo wazi',en:'I wake up in the morning with an open heart',words:['Ninaamka=I wake up','asubuhi=morning','moyo=heart','wazi=open']},
+      {sw:'Ninakula chakula, ninakunywa maji',en:'I eat food, I drink water',words:['Ninakula=I eat','chakula=food','ninakunywa=I drink','maji=water']},
+      {sw:'Ninatembea barabara, ninaona dunia',en:'I walk the road, I see the world',words:['Ninatembea=I walk','barabara=road','ninaona=I see','dunia=world']},
+      {sw:'Ninajifunza kila siku, ninalolipendeza',en:'I learn every day, that which pleases me',words:['Ninajifunza=I learn','kila=every','siku=day','ninalolipendeza=that which pleases me']}
+    ]},
+    {label:'Chorus',lines:[
+      {sw:'Safari ya maisha ni ndefu',en:'The journey of life is long',words:['Safari=Journey/Trip','maisha=life','ni=is','ndefu=long']},
+      {sw:'Lakini tunasafiri pamoja',en:'But we travel together',words:['Lakini=But','tunasafiri=we travel','pamoja=together']},
+      {sw:'Tunaimba, tunacheza, tunafurahi',en:'We sing, we dance, we are happy',words:['Tunaimba=We sing','tunacheza=we dance/play','tunafurahi=we are happy']},
+      {sw:'Safari ya maisha ni nzuri sana',en:'The journey of life is very beautiful',words:['Safari=Journey','maisha=life','nzuri=good/beautiful','sana=very']}
+    ]},
+    {label:'Verse 2',lines:[
+      {sw:'Ninasaidia jirani wangu',en:'I help my neighbor',words:['Ninasaidia=I help','jirani=neighbor','wangu=my']},
+      {sw:'Ninasema ukweli kwa heshima',en:'I speak truth with respect',words:['Ninasema=I speak','ukweli=truth','kwa=with','heshima=respect']},
+      {sw:'Ninapenda familia yangu',en:'I love my family',words:['Ninapenda=I love','familia=family','yangu=my']},
+      {sw:'Ninajenga nyumba ya amani',en:'I build a house of peace',words:['Ninajenga=I build','nyumba=house','amani=peace']}
+    ]},
+    {label:'Bridge',lines:[
+      {sw:'Wakati mzuri, tunashukuru',en:'Good times, we are grateful',words:['Wakati=Time','mzuri=good','tunashukuru=we give thanks']},
+      {sw:'Wakati mgumu, tunashikamana',en:'Hard times, we hold each other',words:['Wakati=Time','mgumu=hard/difficult','tunashikamana=we hold each other']},
+      {sw:'Kwa sababu maisha ni zawadi',en:'Because life is a gift',words:['Kwa sababu=Because','maisha=life','zawadi=gift']},
+      {sw:'Na upendo ni nguvu yetu',en:'And love is our strength',words:['Upendo=Love','nguvu=strength','yetu=our']}
+    ]},
+    {label:'Final Chorus',lines:[
+      {sw:'Safari ya maisha ni ndefu',en:'The journey of life is long',words:['Safari=Journey/Trip','maisha=life','ni=is','ndefu=long']},
+      {sw:'Lakini tunasafiri pamoja',en:'But we travel together',words:['Lakini=But','tunasafiri=we travel','pamoja=together']},
+      {sw:'Tunaimba, tunacheza, tunafurahi',en:'We sing, we dance, we are happy',words:['Tunaimba=We sing','tunacheza=we dance/play','tunafurahi=we are happy']},
+      {sw:'Safari ya maisha ni nzuri sana',en:'The journey of life is very beautiful',words:['Safari=Journey','maisha=life','nzuri=good/beautiful','sana=very']}
+    ]}
+  ],
+  vocab:[
+    {sw:'Safari',en:'Journey / Trip'},{sw:'Maisha',en:'Life'},{sw:'Moyo',en:'Heart'},
+    {sw:'Kula',en:'To eat'},{sw:'Kunywa',en:'To drink'},{sw:'Kutembea',en:'To walk'},
+    {sw:'Kujifunza',en:'To learn'},{sw:'Kusaidia',en:'To help'},{sw:'Kuimba',en:'To sing'},
+    {sw:'Kucheza',en:'To dance/play'},{sw:'Kujenga',en:'To build'},{sw:'Pamoja',en:'Together'},
+    {sw:'Amani',en:'Peace'},{sw:'Upendo',en:'Love'},{sw:'Nguvu',en:'Strength'},
+    {sw:'Zawadi',en:'Gift'},{sw:'Heshima',en:'Respect'},{sw:'Furaha',en:'Happiness'}
+  ]
+},
+{
+  id:'bahari',
+  title:'Bahari ya Ndoto',
+  emoji:'🌊',
+  theme:'The Sea & Dreams — Coast & Nature',
+  tempo:'Flowing, melodic',
+  sections:[
+    {label:'Intro',lines:[
+      {sw:'Bahari ya bluu, mawimbi makubwa',en:'Blue sea, big waves',words:['Bahari=Sea/Ocean','bluu=blue','mawimbi=waves','makubwa=big']},
+      {sw:'Upepo wa pwani unaimba wimbo',en:'The coastal wind sings a song',words:['Upepo=Wind','pwani=coast','unaimba=sings','wimbo=song']}
+    ]},
+    {label:'Verse 1',lines:[
+      {sw:'Ninaona samaki wanaocheza',en:'I see fish dancing',words:['Ninaona=I see','samaki=fish','wanaocheza=who are dancing']},
+      {sw:'Chini ya mawimbi ya bahari',en:'Under the waves of the sea',words:['Chini=Under/Below','mawimbi=waves','bahari=sea']},
+      {sw:'Nyota zinaangaza usiku wa manane',en:'Stars shine in the middle of the night',words:['Nyota=Stars','zinaangaza=they shine','usiku=night','manane=middle of night']},
+      {sw:'Na mwezi unang\'aa juu ya maji',en:'And the moon shines above the water',words:['Mwezi=Moon','unang\'aa=it shines','juu=above','maji=water']}
+    ]},
+    {label:'Chorus',lines:[
+      {sw:'Bahari ya ndoto, ndoto zangu',en:'Sea of dreams, my dreams',words:['Bahari=Sea','ndoto=dreams','zangu=my']},
+      {sw:'Nataka kuruka kama ndege',en:'I want to fly like a bird',words:['Nataka=I want','kuruka=to fly','kama=like','ndege=bird']},
+      {sw:'Kuvuka mawimbi, kufikia mbali',en:'To cross the waves, to reach far away',words:['Kuvuka=To cross','mawimbi=waves','kufikia=to reach','mbali=far']},
+      {sw:'Bahari ya ndoto, furaha yangu',en:'Sea of dreams, my joy',words:['Bahari=Sea','ndoto=dreams','furaha=joy','yangu=my']}
+    ]},
+    {label:'Verse 2',lines:[
+      {sw:'Mvuvi anarudi na mashua yake',en:'The fisherman returns with his boat',words:['Mvuvi=Fisherman','anarudi=returns','mashua=boat','yake=his']},
+      {sw:'Amebeba samaki wengi sana',en:'He has brought very many fish',words:['Amebeba=He has brought/carried','samaki=fish','wengi=many','sana=very']},
+      {sw:'Mnazi unasimama ukiangalia',en:'The coconut palm stands watching',words:['Mnazi=Coconut palm','unasimama=stands','ukiangalia=watching']},
+      {sw:'Mchanga mzuri wa pwani yetu',en:'Beautiful sand of our coast',words:['Mchanga=Sand','mzuri=beautiful','pwani=coast','yetu=our']}
+    ]},
+    {label:'Bridge',lines:[
+      {sw:'Afrika ya mashariki, ardhi ya uzuri',en:'East Africa, land of beauty',words:['Afrika=Africa','mashariki=east','ardhi=land/earth','uzuri=beauty']},
+      {sw:'Milima na bahari, misitu na nchi',en:'Mountains and sea, forests and land',words:['Milima=Mountains','bahari=sea','misitu=forests','nchi=land/country']},
+      {sw:'Tunashukuri kila kitu',en:'We are grateful for everything',words:['Tunashukuri=We are grateful','kila=every','kitu=thing']},
+      {sw:'Nchi yetu ni nzuri sana',en:'Our country is very beautiful',words:['Nchi=Country','yetu=our','ni=is','nzuri=beautiful','sana=very']}
+    ]},
+    {label:'Final Chorus',lines:[
+      {sw:'Bahari ya ndoto, ndoto zangu',en:'Sea of dreams, my dreams',words:['Bahari=Sea','ndoto=dreams','zangu=my']},
+      {sw:'Nataka kuruka kama ndege',en:'I want to fly like a bird',words:['Nataka=I want','kuruka=to fly','kama=like','ndege=bird']},
+      {sw:'Kuvuka mawimbi, kufikia mbali',en:'To cross the waves, to reach far away',words:['Kuvuka=To cross','mawimbi=waves','kufikia=to reach','mbali=far']},
+      {sw:'Bahari ya ndoto, furaha yangu',en:'Sea of dreams, my joy',words:['Bahari=Sea','ndoto=dreams','furaha=joy','yangu=my']}
+    ]},
+    {label:'Outro',lines:[
+      {sw:'Lala salama, bahari ya ndoto',en:'Sleep peacefully, sea of dreams',words:['Lala=Sleep','salama=peacefully','bahari=sea','ndoto=dreams']},
+      {sw:'Tutaonana tena asubuhi',en:'We will see each other again in the morning',words:['Tutaonana=We will meet','tena=again','asubuhi=morning']}
+    ]}
+  ],
+  vocab:[
+    {sw:'Bahari',en:'Sea / Ocean'},{sw:'Mawimbi',en:'Waves'},{sw:'Pwani',en:'Coast / Beach'},
+    {sw:'Samaki',en:'Fish'},{sw:'Mvuvi',en:'Fisherman'},{sw:'Mashua',en:'Boat'},
+    {sw:'Mnazi',en:'Coconut palm'},{sw:'Mchanga',en:'Sand'},{sw:'Nyota',en:'Stars'},
+    {sw:'Mwezi',en:'Moon'},{sw:'Ndoto',en:'Dream'},{sw:'Ndege',en:'Bird'},
+    {sw:'Furaha',en:'Joy / Happiness'},{sw:'Ardhi',en:'Land / Earth'},{sw:'Milima',en:'Mountains'},
+    {sw:'Upepo',en:'Wind'},{sw:'Wimbo',en:'Song'},{sw:'Uzuri',en:'Beauty'}
+  ]
+}
 ];
 
 var STORIES={
@@ -163,14 +366,14 @@ people:{emoji:'👨‍👩‍👧',title:'The Family Gathers',text:'<w l="Mama" 
 body:{emoji:'🏥',title:'At the Hospitali',text:'Juma visits the <w l="Hospitali" e="Hospital">hospitali</w>. His <w l="Kichwa" e="Head">kichwa</w> aches and he has <w l="Maumivu" e="Pain">maumivu</w> in his <w l="Mguu" e="Leg">mguu</w>. The <w l="Daktari" e="Doctor">daktari</w> checks his <w l="Moyo" e="Heart">moyo</w> and <w l="Macho" e="Eyes">macho</w>. He opens his <w l="Mdomo" e="Mouth">mdomo</w>. The doctor says his <w l="Afya" e="Health">afya</w> is fine but he needs <w l="Dawa" e="Medicine">dawa</w> and <w l="Pumzika" e="Rest">pumzika</w>.'},
 food:{emoji:'🍽️',title:'A Swahili Feast',text:'Fatuma prepares <w l="Chakula" e="Food">chakula</w>. She cooks <w l="Wali" e="Rice">wali</w> with <w l="Mchuzi" e="Sauce">mchuzi</w> and <w l="Nyama" e="Meat">nyama</w>. She fries <w l="Kuku" e="Chicken">kuku</w> and boils <w l="Maharage" e="Beans">maharage</w>. There is fresh <w l="Chapati" e="Flatbread">chapati</w> and sweet <w l="Chai" e="Tea">chai</w>. The children smell it and come running — no more <w l="Njaa" e="Hunger">njaa</w>! Everyone agrees: <w l="Tamu" e="Delicious">tamu</w> sana!'},
 home:{emoji:'🏠',title:'A Day at Home',text:'Aisha wakes in her <w l="Nyumba" e="House">nyumba</w>. She sits on her <w l="Kitanda" e="Bed">kitanda</w> and picks up her <w l="Simu" e="Phone">simu</w>. She goes to the <w l="Jiko" e="Stove">jiko</w> to cook. She grabs the <w l="Kisu" e="Knife">kisu</w> and a <w l="Sufuria" e="Cooking pot">sufuria</w>. Later she sweeps with her <w l="Fagio" e="Broom">fagio</w> and opens the <w l="Mlango" e="Door">mlango</w> with her <w l="Ufunguo" e="Key">ufunguo</w>. In the evening she reads by the <w l="Taa" e="Lamp">taa</w>.'},
-nature:{emoji:'🌿',title:'Safari Morning',text:'Omar walks into the <w l="Msitu" e="Forest">msitu</w>. He hears an <w l="Ndege" e="Bird">ndege</w> in the <w l="Mti" e="Tree">mti</w>. <w l="Mvua" e="Rain">Mvua</w> fell last night and now the <w l="Jua" e="Sun">jua</w> shines. He sees a <w l="Nyani" e="Monkey">nyani</w> near the <w l="Mto" e="River">mto</w>. In the distance, a <w l="Tembo" e="Elephant">tembo</w> drinks. The <w l="Mwezi" e="Moon">mwezi</w> is still visible in the morning sky. Beautiful <w l="Ardhi" e="Earth">ardhi</w>.'},
-numbers:{emoji:'🛒',title:'Soko Day',text:'Mama goes to the <w l="Soko" e="Market">soko</w>. She buys <w l="Mbili" e="Two">mbili</w> mangoes and <w l="Tatu" e="Three">tatu</w> tomatoes. The vendor asks for <w l="Tano" e="Five">tano</w> coins. She checks her <w l="Saa" e="Watch">saa</w>. It is <w l="Leo" e="Today">leo</w> she must finish, because <w l="Kesho" e="Tomorrow">kesho</w> is busy. She must be home before <w l="Usiku" e="Night">usiku</w> falls. In the <w l="Asubuhi" e="Morning">asubuhi</w> she will come back.'},
-verbs:{emoji:'⚒️',title:'A Busy Tuesday',text:'Baraka must <w l="Kwenda" e="Go">kwenda</w> to the shamba to <w l="Kulima" e="Farm">kulima</w>. First he must <w l="Kula" e="Eat">kula</w> and <w l="Kunywa" e="Drink">kunywa</w> chai. He likes to <w l="Kuimba" e="Sing">kuimba</w> while he works. His children <w l="Kusoma" e="Study">kusoma</w> at shule. In the evening he wants to <w l="Kukaa" e="Sit/Stay">kukaa</w> and <w l="Kusikia" e="Listen">kusikia</w> to music. Before sleeping he calls his <w l="Familia" e="Family">familia</w> to <w l="Kusema" e="Speak">kusema</w> with them.'},
-adjectives:{emoji:'🌸',title:'The Beautiful Village',text:'The kijiji is <w l="Nzuri" e="Beautiful">nzuri</w>. The houses are <w l="Mpya" e="New">mpya</w> but some are <w l="Zamani" e="Old">zamani</w> and <w l="Ngumu" e="Strong">ngumu</w>. Children are <w l="Haraka" e="Fast">haraka</w> but grandfather is <w l="Polepole" e="Slow">polepole</w>. The mango tree is <w l="Kubwa" e="Big">kubwa</w> and the seedling is <w l="Ndogo" e="Small">ndogo</w>. The mama mboga is <w l="Ukarimu" e="Generous">ukarimu</w> and her fruit is <w l="Tamu" e="Sweet">tamu</w>. Life here is <w l="Safi" e="Clean/Great">safi</w> and <w l="Amani" e="Peaceful">amani</w>.'},
-places:{emoji:'🚌',title:'Journey to Nairobi',text:'Grace takes the <w l="Daladala" e="Minibus">daladala</w> from her <w l="Kijiji" e="Village">kijiji</w> to <w l="Nairobi" e="Nairobi">Nairobi</w>. She crosses a <w l="Daraja" e="Bridge">daraja</w>. She passes a big <w l="Hospitali" e="Hospital">hospitali</w> and an old <w l="Kanisa" e="Church">kanisa</w>. She visits the <w l="Soko" e="Market">soko</w> and the <w l="Shule" e="School">shule</w>. She rides a <w l="Boda boda" e="Boda boda">boda boda</w>. Near the <w l="Ikulu" e="Palace">ikulu</w> she finds the <w l="Stendi" e="Bus station">stendi</w>. She loves the <w l="Mji" e="City">mji</w>!'},
-culture:{emoji:'🎭',title:'The Village Celebration',text:'Today is a big <w l="Sherehe" e="Celebration">sherehe</w>. People wear their beautiful <w l="Kanga" e="Kanga cloth">kanga</w> and <w l="Kikoi" e="Kikoi cloth">kikoi</w>. The <w l="Ngoma" e="Drums">ngoma</w> beat and everyone dances. An elder shares a <w l="Methali" e="Proverb">methali</w>: <w l="Ubuntu" e="Togetherness">Ubuntu</w> is everything. The young people sing <w l="Taarab" e="Taarab music">taarab</w>. The gathering shows true <w l="Heshima" e="Respect">heshima</w> and <w l="Amani" e="Peace">amani</w>. <w l="Uhuru" e="Freedom">Uhuru</w> is celebrated with <w l="Furaha" e="Joy">furaha</w>.'},
-wildlife:{emoji:'🦁',title:'On Safari',text:'The jeep enters the <w l="Hifadhi ya wanyama" e="Wildlife reserve">hifadhi</w>. First they see a <w l="Twiga" e="Giraffe">twiga</w> eating from a tall tree. Then a <w l="Pundamilia" e="Zebra">pundamilia</w> trots past. A <w l="Simba" e="Lion">simba</w> rests in the shade. Near the river, a <w l="Kiboko" e="Hippo">kiboko</w> yawns. A <w l="Chui" e="Leopard">chui</w> watches from a branch. High above, a <w l="Tai" e="Eagle">tai</w> circles. The guide says: <w l="Wanyama" e="Animals">wanyama</w> wa Afrika ni ajabu — Africa\'s animals are wonderful!'},
-coast:{emoji:'🌊',title:'Zanzibar Mornings',text:'Hassan wakes in <w l="Zanzibar" e="Zanzibar">Zanzibar</w>. He walks to the <w l="Pwani" e="Beach">pwani</w> where the <w l="Mawimbi" e="Waves">mawimbi</w> crash on the <w l="Mchanga" e="Sand">mchanga</w>. The <w l="Wavuvi" e="Fishermen">wavuvi</w> return with their <w l="Mashua" e="Boat">mashua</w> full of <w l="Samaki" e="Fish">samaki</w>. He climbs a <w l="Mnazi" e="Coconut palm">mnazi</w> for fresh <w l="Nazi" e="Coconut">nazi</w>. At the <w l="Bandari" e="Port">bandari</w>, a <w l="Jahazi" e="Dhow">jahazi</w> sets sail. This is the beauty of <w l="Biashara" e="Trade">biashara</w> on the Swahili <w l="Bahari" e="Sea">bahari</w>.'}
+nature:{emoji:'🌿',title:'Safari Morning',text:'Omar walks into the <w l="Msitu" e="Forest">msitu</w>. He hears an <w l="Ndege" e="Bird">ndege</w> in the <w l="Mti" e="Tree">mti</w>. <w l="Mvua" e="Rain">Mvua</w> fell last night and now the <w l="Jua" e="Sun">jua</w> shines. He sees a <w l="Nyani" e="Monkey">nyani</w> near the <w l="Mto" e="River">mto</w>. In the distance, a <w l="Tembo" e="Elephant">tembo</w> drinks. The <w l="Mwezi" e="Moon">mwezi</w> is still visible in the morning sky.'},
+numbers:{emoji:'🛒',title:'Soko Day',text:'Mama goes to the <w l="Soko" e="Market">soko</w>. She buys <w l="Mbili" e="Two">mbili</w> mangoes and <w l="Tatu" e="Three">tatu</w> tomatoes. The vendor asks for <w l="Tano" e="Five">tano</w> coins. She checks her <w l="Saa" e="Watch">saa</w>. It is <w l="Leo" e="Today">leo</w> she must finish, because <w l="Kesho" e="Tomorrow">kesho</w> is busy. She must be home before <w l="Usiku" e="Night">usiku</w> falls.'},
+verbs:{emoji:'⚒️',title:'A Busy Tuesday',text:'Baraka must <w l="Kwenda" e="Go">kwenda</w> to farm to <w l="Kulima" e="Farm">kulima</w>. First he must <w l="Kula" e="Eat">kula</w> and <w l="Kunywa" e="Drink">kunywa</w> chai. He likes to <w l="Kuimba" e="Sing">kuimba</w> while he works. His children <w l="Kusoma" e="Study">kusoma</w>. In the evening he wants to <w l="Kukaa" e="Stay">kukaa</w> and <w l="Kusikia" e="Listen">kusikia</w> to music. Before sleeping he calls his family to <w l="Kusema" e="Speak">kusema</w>.'},
+adjectives:{emoji:'🌸',title:'The Beautiful Village',text:'The kijiji is <w l="Nzuri" e="Beautiful">nzuri</w>. Houses are <w l="Mpya" e="New">mpya</w> but some are <w l="Zamani" e="Old">zamani</w> and <w l="Ngumu" e="Strong">ngumu</w>. Children are <w l="Haraka" e="Fast">haraka</w> but grandfather is <w l="Polepole" e="Slow">polepole</w>. The mango tree is <w l="Kubwa" e="Big">kubwa</w> and the seedling is <w l="Ndogo" e="Small">ndogo</w>. Life here is <w l="Safi" e="Great">safi</w> and <w l="Amani" e="Peaceful">amani</w>.'},
+places:{emoji:'🚌',title:'Journey to Nairobi',text:'Grace takes the <w l="Daladala" e="Minibus">daladala</w> from her <w l="Kijiji" e="Village">kijiji</w> to <w l="Nairobi" e="Nairobi">Nairobi</w>. She crosses a <w l="Daraja" e="Bridge">daraja</w>. She passes a big <w l="Hospitali" e="Hospital">hospitali</w>. She visits the <w l="Soko" e="Market">soko</w>. She rides a <w l="Boda boda" e="Boda boda">boda boda</w>. Near the <w l="Ikulu" e="Palace">ikulu</w> she finds the <w l="Stendi" e="Bus station">stendi</w>. She loves the <w l="Mji" e="City">mji</w>!'},
+culture:{emoji:'🎭',title:'The Village Celebration',text:'Today is a big <w l="Sherehe" e="Celebration">sherehe</w>. People wear beautiful <w l="Kanga" e="Kanga cloth">kanga</w>. The <w l="Ngoma" e="Drums">ngoma</w> beat and everyone dances. An elder shares a <w l="Methali" e="Proverb">methali</w>: <w l="Ubuntu" e="Togetherness">Ubuntu</w> is everything. People sing <w l="Taarab" e="Taarab music">taarab</w>. The gathering shows true <w l="Heshima" e="Respect">heshima</w> and <w l="Amani" e="Peace">amani</w>.'},
+wildlife:{emoji:'🦁',title:'On Safari',text:'They enter the <w l="Hifadhi ya wanyama" e="Wildlife reserve">hifadhi</w>. First they see a <w l="Twiga" e="Giraffe">twiga</w>. Then a <w l="Pundamilia" e="Zebra">pundamilia</w> trots past. A <w l="Simba" e="Lion">simba</w> rests in shade. Near the river, a <w l="Kiboko" e="Hippo">kiboko</w> yawns. A <w l="Chui" e="Leopard">chui</w> watches from a branch. High above, a <w l="Tai" e="Eagle">tai</w> circles. <w l="Wanyama" e="Animals">Wanyama</w> wa Afrika ni ajabu!'},
+coast:{emoji:'🌊',title:'Zanzibar Mornings',text:'Hassan walks to the <w l="Pwani" e="Beach">pwani</w> where <w l="Mawimbi" e="Waves">mawimbi</w> crash on the <w l="Mchanga" e="Sand">mchanga</w>. The <w l="Wavuvi" e="Fishermen">wavuvi</w> return with their <w l="Mashua" e="Boat">mashua</w> full of <w l="Samaki" e="Fish">samaki</w>. He gets fresh <w l="Nazi" e="Coconut">nazi</w>. At the <w l="Bandari" e="Port">bandari</w>, a <w l="Jahazi" e="Dhow">jahazi</w> sets sail on the <w l="Bahari" e="Sea">bahari</w>.'}
 };
 
 var FILL={
@@ -180,88 +383,88 @@ greetings:[
   {before:'Goodbye in Swahili:',blank:'Kwaheri',after:'.',target:'Kwaheri',hint:'Farewell'},
   {before:'Yes in Swahili:',blank:'Ndiyo',after:'.',target:'Ndiyo',hint:'Agreement'},
   {before:'No worries / No problem:',blank:'Hakuna matata',after:'.',target:'Hakuna matata',hint:'Famous phrase'},
-  {before:'Welcome in Swahili:',blank:'Karibu',after:'.',target:'Karibu',hint:'Hospitality'},
-  {before:'Please in Swahili:',blank:'Tafadhali',after:'.',target:'Tafadhali',hint:'Polite request'}
+  {before:'Welcome:',blank:'Karibu',after:'.',target:'Karibu',hint:'Hospitality'},
+  {before:'Please:',blank:'Tafadhali',after:'.',target:'Tafadhali',hint:'Polite request'}
 ],
 people:[
-  {before:'Mother in Swahili:',blank:'Mama',after:'.',target:'Mama',hint:'Parent'},
-  {before:'A boy is:',blank:'Mvulana',after:'.',target:'Mvulana',hint:'Young male'},
-  {before:'Grandfather is:',blank:'Babu',after:'.',target:'Babu',hint:'Older generation'},
-  {before:'A teacher is:',blank:'Mwalimu',after:'.',target:'Mwalimu',hint:'Education'},
-  {before:'A doctor is:',blank:'Daktari',after:'.',target:'Daktari',hint:'Healthcare'},
-  {before:'Friend in Swahili:',blank:'Rafiki',after:'.',target:'Rafiki',hint:'Companion'},
-  {before:'Family in Swahili:',blank:'Familia',after:'.',target:'Familia',hint:'Household unit'}
+  {before:'Mother:',blank:'Mama',after:'.',target:'Mama',hint:'Parent'},
+  {before:'A boy:',blank:'Mvulana',after:'.',target:'Mvulana',hint:'Young male'},
+  {before:'Grandfather:',blank:'Babu',after:'.',target:'Babu',hint:'Elder'},
+  {before:'A teacher:',blank:'Mwalimu',after:'.',target:'Mwalimu',hint:'Education'},
+  {before:'A doctor:',blank:'Daktari',after:'.',target:'Daktari',hint:'Healthcare'},
+  {before:'Friend:',blank:'Rafiki',after:'.',target:'Rafiki',hint:'Companion'},
+  {before:'Family:',blank:'Familia',after:'.',target:'Familia',hint:'Household'}
 ],
 body:[
-  {before:'Eyes in Swahili:',blank:'Macho',after:'.',target:'Macho',hint:'Vision'},
-  {before:'The heart is:',blank:'Moyo',after:'.',target:'Moyo',hint:'Vital organ'},
-  {before:'Head in Swahili:',blank:'Kichwa',after:'.',target:'Kichwa',hint:'Top of body'},
-  {before:'Pain in Swahili:',blank:'Maumivu',after:'.',target:'Maumivu',hint:'Discomfort'},
-  {before:'Blood in Swahili:',blank:'Damu',after:'.',target:'Damu',hint:'Red fluid'},
-  {before:'Medicine is:',blank:'Dawa',after:'.',target:'Dawa',hint:'Treatment'},
-  {before:'Health in Swahili:',blank:'Afya',after:'.',target:'Afya',hint:'Wellbeing'}
+  {before:'Eyes:',blank:'Macho',after:'.',target:'Macho',hint:'Vision'},
+  {before:'The heart:',blank:'Moyo',after:'.',target:'Moyo',hint:'Vital organ'},
+  {before:'Head:',blank:'Kichwa',after:'.',target:'Kichwa',hint:'Top of body'},
+  {before:'Pain:',blank:'Maumivu',after:'.',target:'Maumivu',hint:'Discomfort'},
+  {before:'Blood:',blank:'Damu',after:'.',target:'Damu',hint:'Red fluid'},
+  {before:'Medicine:',blank:'Dawa',after:'.',target:'Dawa',hint:'Treatment'},
+  {before:'Health:',blank:'Afya',after:'.',target:'Afya',hint:'Wellbeing'}
 ],
 food:[
   {before:'The staple starchy food:',blank:'Ugali',after:'.',target:'Ugali',hint:'Maize porridge'},
-  {before:'Water in Swahili:',blank:'Maji',after:'.',target:'Maji',hint:'Essential liquid'},
-  {before:'Meat in Swahili:',blank:'Nyama',after:'.',target:'Nyama',hint:'Protein'},
-  {before:'Coffee in Swahili:',blank:'Kahawa',after:'.',target:'Kahawa',hint:'Hot drink'},
-  {before:'Hunger in Swahili:',blank:'Njaa',after:'.',target:'Njaa',hint:'Need for food'},
+  {before:'Water:',blank:'Maji',after:'.',target:'Maji',hint:'Essential liquid'},
+  {before:'Meat:',blank:'Nyama',after:'.',target:'Nyama',hint:'Protein'},
+  {before:'Coffee:',blank:'Kahawa',after:'.',target:'Kahawa',hint:'Hot drink'},
+  {before:'Hunger:',blank:'Njaa',after:'.',target:'Njaa',hint:'Need for food'},
   {before:'Spiced rice dish:',blank:'Pilau',after:'.',target:'Pilau',hint:'East African rice'},
-  {before:'Tea in Swahili:',blank:'Chai',after:'.',target:'Chai',hint:'Hot beverage'}
+  {before:'Tea:',blank:'Chai',after:'.',target:'Chai',hint:'Hot beverage'}
 ],
 home:[
-  {before:'House in Swahili:',blank:'Nyumba',after:'.',target:'Nyumba',hint:'Where you live'},
-  {before:'A bed is:',blank:'Kitanda',after:'.',target:'Kitanda',hint:'Sleeping furniture'},
-  {before:'A door is:',blank:'Mlango',after:'.',target:'Mlango',hint:'Entrance'},
-  {before:'A broom is:',blank:'Fagio',after:'.',target:'Fagio',hint:'Cleaning tool'},
-  {before:'A key is:',blank:'Ufunguo',after:'.',target:'Ufunguo',hint:'Opens locks'},
-  {before:'A lamp is:',blank:'Taa',after:'.',target:'Taa',hint:'Light source'},
-  {before:'A cooking pot is:',blank:'Sufuria',after:'.',target:'Sufuria',hint:'Kitchen item'}
+  {before:'House:',blank:'Nyumba',after:'.',target:'Nyumba',hint:'Where you live'},
+  {before:'A bed:',blank:'Kitanda',after:'.',target:'Kitanda',hint:'Sleeping furniture'},
+  {before:'A door:',blank:'Mlango',after:'.',target:'Mlango',hint:'Entrance'},
+  {before:'A broom:',blank:'Fagio',after:'.',target:'Fagio',hint:'Cleaning tool'},
+  {before:'A key:',blank:'Ufunguo',after:'.',target:'Ufunguo',hint:'Opens locks'},
+  {before:'A lamp:',blank:'Taa',after:'.',target:'Taa',hint:'Light source'},
+  {before:'A cooking pot:',blank:'Sufuria',after:'.',target:'Sufuria',hint:'Kitchen item'}
 ],
 nature:[
-  {before:'A tree in Swahili:',blank:'Mti',after:'.',target:'Mti',hint:'Tall plant'},
-  {before:'Rain in Swahili:',blank:'Mvua',after:'.',target:'Mvua',hint:'Weather'},
-  {before:'The sun is:',blank:'Jua',after:'.',target:'Jua',hint:'Bright star'},
-  {before:'A river is:',blank:'Mto',after:'.',target:'Mto',hint:'Flowing water'},
-  {before:'An elephant is:',blank:'Tembo',after:'.',target:'Tembo',hint:'Large animal'},
-  {before:'A cloud is:',blank:'Wingu',after:'.',target:'Wingu',hint:'In the sky'},
-  {before:'The ocean is:',blank:'Bahari',after:'.',target:'Bahari',hint:'Large water body'}
+  {before:'A tree:',blank:'Mti',after:'.',target:'Mti',hint:'Tall plant'},
+  {before:'Rain:',blank:'Mvua',after:'.',target:'Mvua',hint:'Weather'},
+  {before:'The sun:',blank:'Jua',after:'.',target:'Jua',hint:'Bright star'},
+  {before:'A river:',blank:'Mto',after:'.',target:'Mto',hint:'Flowing water'},
+  {before:'An elephant:',blank:'Tembo',after:'.',target:'Tembo',hint:'Large animal'},
+  {before:'A cloud:',blank:'Wingu',after:'.',target:'Wingu',hint:'In the sky'},
+  {before:'The ocean:',blank:'Bahari',after:'.',target:'Bahari',hint:'Large water body'}
 ],
 numbers:[
-  {before:'The number one:',blank:'Moja',after:'.',target:'Moja',hint:'First number'},
-  {before:'Five is:',blank:'Tano',after:'.',target:'Tano',hint:'One hand'},
-  {before:'Ten is:',blank:'Kumi',after:'.',target:'Kumi',hint:'Two hands'},
-  {before:'Today is:',blank:'Leo',after:'.',target:'Leo',hint:'This day'},
-  {before:'Tomorrow is:',blank:'Kesho',after:'.',target:'Kesho',hint:'Next day'},
-  {before:'One hundred is:',blank:'Mia',after:'.',target:'Mia',hint:'Large number'},
-  {before:'A minute is:',blank:'Dakika',after:'.',target:'Dakika',hint:'Short time unit'}
+  {before:'One:',blank:'Moja',after:'.',target:'Moja',hint:'First number'},
+  {before:'Five:',blank:'Tano',after:'.',target:'Tano',hint:'One hand'},
+  {before:'Ten:',blank:'Kumi',after:'.',target:'Kumi',hint:'Two hands'},
+  {before:'Today:',blank:'Leo',after:'.',target:'Leo',hint:'This day'},
+  {before:'Tomorrow:',blank:'Kesho',after:'.',target:'Kesho',hint:'Next day'},
+  {before:'One hundred:',blank:'Mia',after:'.',target:'Mia',hint:'Large number'},
+  {before:'A minute:',blank:'Dakika',after:'.',target:'Dakika',hint:'Time unit'}
 ],
 verbs:[
-  {before:'To eat in Swahili:',blank:'Kula',after:'.',target:'Kula',hint:'Food action'},
-  {before:'To go is:',blank:'Kwenda',after:'.',target:'Kwenda',hint:'Movement'},
-  {before:'To sleep is:',blank:'Kulala',after:'.',target:'Kulala',hint:'Rest'},
-  {before:'To cook is:',blank:'Kupika',after:'.',target:'Kupika',hint:'Kitchen action'},
-  {before:'To sing is:',blank:'Kuimba',after:'.',target:'Kuimba',hint:'Music'},
-  {before:'To help is:',blank:'Kusaidia',after:'.',target:'Kusaidia',hint:'Assistance'},
-  {before:'To learn is:',blank:'Kujifunza',after:'.',target:'Kujifunza',hint:'Education'},
-  {before:'To understand is:',blank:'Kuelewa',after:'.',target:'Kuelewa',hint:'Comprehension'}
+  {before:'To eat:',blank:'Kula',after:'.',target:'Kula',hint:'Food action'},
+  {before:'To go:',blank:'Kwenda',after:'.',target:'Kwenda',hint:'Movement'},
+  {before:'To sleep:',blank:'Kulala',after:'.',target:'Kulala',hint:'Rest'},
+  {before:'To cook:',blank:'Kupika',after:'.',target:'Kupika',hint:'Kitchen action'},
+  {before:'To sing:',blank:'Kuimba',after:'.',target:'Kuimba',hint:'Music'},
+  {before:'To help:',blank:'Kusaidia',after:'.',target:'Kusaidia',hint:'Assistance'},
+  {before:'To learn:',blank:'Kujifunza',after:'.',target:'Kujifunza',hint:'Education'},
+  {before:'To understand:',blank:'Kuelewa',after:'.',target:'Kuelewa',hint:'Comprehension'}
 ],
 adjectives:[
   {before:'Good or beautiful:',blank:'Nzuri',after:'.',target:'Nzuri',hint:'Positive quality'},
   {before:'Big or large:',blank:'Kubwa',after:'.',target:'Kubwa',hint:'Size'},
-  {before:'Fast in Swahili:',blank:'Haraka',after:'.',target:'Haraka',hint:'Speed'},
+  {before:'Fast:',blank:'Haraka',after:'.',target:'Haraka',hint:'Speed'},
   {before:'Sweet / delicious:',blank:'Tamu',after:'.',target:'Tamu',hint:'Taste'},
-  {before:'New in Swahili:',blank:'Mpya',after:'.',target:'Mpya',hint:'Recent'},
-  {before:'Clean / great (slang):',blank:'Safi',after:'.',target:'Safi',hint:'Cleanliness/Cool'},
-  {before:'Peace / peaceful:',blank:'Amani',after:'.',target:'Amani',hint:'Calm quality'}
+  {before:'New:',blank:'Mpya',after:'.',target:'Mpya',hint:'Recent'},
+  {before:'Clean / great:',blank:'Safi',after:'.',target:'Safi',hint:'Cleanliness'},
+  {before:'Peaceful:',blank:'Amani',after:'.',target:'Amani',hint:'Calm quality'}
 ],
 places:[
   {before:'Capital of Kenya:',blank:'Nairobi',after:'.',target:'Nairobi',hint:'Major city'},
-  {before:'A school is:',blank:'Shule',after:'.',target:'Shule',hint:'Learning place'},
-  {before:'A market is:',blank:'Soko',after:'.',target:'Soko',hint:'Shopping place'},
-  {before:'A village is:',blank:'Kijiji',after:'.',target:'Kijiji',hint:'Rural settlement'},
-  {before:'A bridge is:',blank:'Daraja',after:'.',target:'Daraja',hint:'Crosses water'},
+  {before:'A school:',blank:'Shule',after:'.',target:'Shule',hint:'Learning place'},
+  {before:'A market:',blank:'Soko',after:'.',target:'Soko',hint:'Shopping place'},
+  {before:'A village:',blank:'Kijiji',after:'.',target:'Kijiji',hint:'Rural settlement'},
+  {before:'A bridge:',blank:'Daraja',after:'.',target:'Daraja',hint:'Crosses water'},
   {before:'Africa\'s highest mountain:',blank:'Kilimanjaro',after:'.',target:'Kilimanjaro',hint:'Famous peak'},
   {before:'Famous Tanzania island:',blank:'Zanzibar',after:'.',target:'Zanzibar',hint:'Coastal island'}
 ],
@@ -269,48 +472,52 @@ culture:[
   {before:'Swahili word for freedom:',blank:'Uhuru',after:'.',target:'Uhuru',hint:'Independence'},
   {before:'Traditional drum / dance:',blank:'Ngoma',after:'.',target:'Ngoma',hint:'Music & dance'},
   {before:'African togetherness:',blank:'Ubuntu',after:'.',target:'Ubuntu',hint:'Humanity concept'},
-  {before:'Respect in Swahili:',blank:'Heshima',after:'.',target:'Heshima',hint:'Honor'},
-  {before:'A proverb is:',blank:'Methali',after:'.',target:'Methali',hint:'Wise saying'},
-  {before:'The Swahili language:',blank:'Kiswahili',after:'.',target:'Kiswahili',hint:'The language itself'},
-  {before:'A wedding is:',blank:'Harusi',after:'.',target:'Harusi',hint:'Marriage ceremony'}
+  {before:'Respect:',blank:'Heshima',after:'.',target:'Heshima',hint:'Honor'},
+  {before:'A proverb:',blank:'Methali',after:'.',target:'Methali',hint:'Wise saying'},
+  {before:'The Swahili language:',blank:'Kiswahili',after:'.',target:'Kiswahili',hint:'Language name'},
+  {before:'A wedding:',blank:'Harusi',after:'.',target:'Harusi',hint:'Marriage ceremony'}
 ],
 wildlife:[
-  {before:'A giraffe is:',blank:'Twiga',after:'.',target:'Twiga',hint:'Tall animal'},
-  {before:'A lion is:',blank:'Simba',after:'.',target:'Simba',hint:'Big cat'},
-  {before:'A zebra is:',blank:'Pundamilia',after:'.',target:'Pundamilia',hint:'Striped horse'},
-  {before:'A hippo is:',blank:'Kiboko',after:'.',target:'Kiboko',hint:'River animal'},
-  {before:'A cheetah is:',blank:'Duma',after:'.',target:'Duma',hint:'Fastest land animal'},
-  {before:'A hyena is:',blank:'Fisi',after:'.',target:'Fisi',hint:'Scavenger'},
-  {before:'A crocodile is:',blank:'Mamba',after:'.',target:'Mamba',hint:'Reptile in rivers'}
+  {before:'A giraffe:',blank:'Twiga',after:'.',target:'Twiga',hint:'Tall animal'},
+  {before:'A lion:',blank:'Simba',after:'.',target:'Simba',hint:'Big cat'},
+  {before:'A zebra:',blank:'Pundamilia',after:'.',target:'Pundamilia',hint:'Striped horse'},
+  {before:'A hippo:',blank:'Kiboko',after:'.',target:'Kiboko',hint:'River animal'},
+  {before:'A cheetah:',blank:'Duma',after:'.',target:'Duma',hint:'Fastest land animal'},
+  {before:'A hyena:',blank:'Fisi',after:'.',target:'Fisi',hint:'Scavenger'},
+  {before:'A crocodile:',blank:'Mamba',after:'.',target:'Mamba',hint:'River reptile'}
 ],
 coast:[
-  {before:'The sea in Swahili:',blank:'Bahari',after:'.',target:'Bahari',hint:'Ocean'},
-  {before:'A beach is:',blank:'Pwani',after:'.',target:'Pwani',hint:'Coastal area'},
+  {before:'The sea:',blank:'Bahari',after:'.',target:'Bahari',hint:'Ocean'},
+  {before:'A beach:',blank:'Pwani',after:'.',target:'Pwani',hint:'Coastal area'},
   {before:'A traditional dhow:',blank:'Jahazi',after:'.',target:'Jahazi',hint:'Sailing boat'},
-  {before:'Coconut in Swahili:',blank:'Nazi',after:'.',target:'Nai',hint:'Tropical fruit'},
-  {before:'A fisherman is:',blank:'Mvuvi',after:'.',target:'Mvuvi',hint:'Fishing person'},
-  {before:'Grilled meat dish:',blank:'Nyama choma',after:'.',target:'Nyama choma',hint:'BBQ favourite'},
-  {before:'Waves in Swahili:',blank:'Mawimbi',after:'.',target:'Mawimbi',hint:'Ocean motion'}
+  {before:'Coconut:',blank:'Nazi',after:'.',target:'Nazi',hint:'Tropical fruit'},
+  {before:'A fisherman:',blank:'Mvuvi',after:'.',target:'Mvuvi',hint:'Fishing person'},
+  {before:'Grilled meat:',blank:'Nyama choma',after:'.',target:'Nyama choma',hint:'BBQ favourite'},
+  {before:'Waves:',blank:'Mawimbi',after:'.',target:'Mawimbi',hint:'Ocean motion'}
 ]
 };
 
-var currentCat='greetings',learned=new Set(JSON.parse(localStorage.getItem('sw_learned')||'[]')),mode='browse',qS={},pS={},fS={},storyState={cat:null};
+var currentCat='greetings',learned=new Set(JSON.parse(localStorage.getItem('sw_learned')||'[]')),mode='browse',qS={},pS={},fS={},storyState={cat:null},songState={song:null},playState={active:false,songId:null,lineIdx:0,timeout:null};
 
 function save(){try{localStorage.setItem('sw_learned',JSON.stringify([...learned]));}catch(e){}updateProg();}
 function updateProg(){var t=Object.values(VOCAB).flat().length,c=learned.size;document.getElementById('pt').textContent=c+' / '+t+' learned';document.getElementById('pf').style.width=Math.round(c/t*100)+'%';}
-function speak(w){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(w),v=window.speechSynthesis.getVoices(),s=v.find(function(x){return x.lang.startsWith('sw');});if(s)u.voice=s;u.rate=0.85;u.pitch=1.0;window.speechSynthesis.speak(u);}
+function speak(w,rate){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(w),v=window.speechSynthesis.getVoices(),s=v.find(function(x){return x.lang.startsWith('sw');});if(s)u.voice=s;u.rate=rate||0.85;u.pitch=1.0;return new Promise(function(res){u.onend=res;window.speechSynthesis.speak(u);});}
 
 function buildSidebar(){
-  var h='<div><div class="sidebar-label">Categories</div>';
+  var h='<div><div class="sidebar-label">Vocabulary</div>';
   CATS.forEach(function(c){
+    if(c.isSong) return;
     var ws=VOCAB[c.id]||[],lc=ws.filter(function(w){return learned.has(c.id+':'+w.l);}).length;
     h+='<button class="cat-btn'+(currentCat===c.id?' active':'')+'" onclick="sel(\''+c.id+'\')">'+'<span class="cat-icon">'+c.icon+'</span><span>'+c.label+'</span><span class="cat-count">'+lc+'/'+ws.length+'</span></button>';
   });
+  h+='<div class="sidebar-label" style="margin-top:.5rem">Music</div>';
+  h+='<button class="cat-btn song-btn'+(currentCat==='__songs__'?' active':'')+'" onclick="sel(\'__songs__\')">'+'<span class="cat-icon">🎵</span><span>Songs</span><span class="cat-count">3</span></button>';
   document.getElementById('sidebar').innerHTML=h+'</div>';
 }
-function sel(id){currentCat=id;mode='browse';storyState.cat=null;buildSidebar();render();}
+function sel(id){currentCat=id;mode='browse';storyState.cat=null;songState.song=null;stopSong();buildSidebar();render();}
 
 function render(){
+  if(currentCat==='__songs__'){renderSongs();return;}
   var cat=CATS.find(function(c){return c.id===currentCat;}),words=VOCAB[currentCat]||[];
   var sv='',es=document.getElementById('search-input');if(es)sv=es.value;
   var filtered=words;
@@ -356,12 +563,7 @@ function renderQuiz(words){
 function ansQ(c){if(qS.ans)return;qS.ans=true;var w=qS.words[qS.i],cor=w.e;document.querySelectorAll('.quiz-opt').forEach(function(b){b.disabled=true;if(b.textContent===cor)b.classList.add('correct');else if(b.textContent===c&&c!==cor)b.classList.add('wrong');});if(c===cor){qS.score++;learned.add(currentCat+':'+w.l);save();buildSidebar();}document.getElementById('qnxt').style.display='inline-block';}
 function nextQ(){qS.i++;qS.ans=false;render();}
 
-function initP(){
-  var words=VOCAB[currentCat]||[],sample=words.slice().sort(function(){return Math.random()-.5;}).slice(0,8);
-  var lug=sample.map(function(w,i){return{id:'l'+i,text:w.ic+' '+w.l,match:'e'+i,matched:false};});
-  var eng=sample.map(function(w,i){return{id:'e'+i,text:w.e,match:'l'+i,matched:false};});
-  pS={lug:lug,eng:eng.slice().sort(function(){return Math.random()-.5;}),sel:null,score:0,total:sample.length,wf:null};
-}
+function initP(){var words=VOCAB[currentCat]||[],sample=words.slice().sort(function(){return Math.random()-.5;}).slice(0,8);var lug=sample.map(function(w,i){return{id:'l'+i,text:w.ic+' '+w.l,match:'e'+i,matched:false};});var eng=sample.map(function(w,i){return{id:'e'+i,text:w.e,match:'l'+i,matched:false};});pS={lug:lug,eng:eng.slice().sort(function(){return Math.random()-.5;}),sel:null,score:0,total:sample.length,wf:null};}
 function renderPairs(words){
   if(!pS.lug)initP();
   var matched=pS.lug.filter(function(c){return c.matched;}).length;
@@ -370,15 +572,7 @@ function renderPairs(words){
   var eh=pS.eng.map(function(c){return'<div class="pair-card'+(c.matched?' matched':'')+(pS.sel&&pS.sel.id===c.id?' sel':'')+(pS.wf===c.id?' wf':'')+'" onclick="selP(\''+c.id+'\')">'+c.text+'</div>';}).join('');
   return'<div class="pairs-wrap"><div class="pairs-score"><span>Matched: '+matched+' / '+pS.total+'</span><span>Score: '+pS.score+'</span></div><div class="pairs-grid"><div><div class="pairs-col-label">Swahili</div>'+lh+'</div><div><div class="pairs-col-label">English</div>'+eh+'</div></div></div>';
 }
-function selP(id){
-  var all=pS.lug.concat(pS.eng),card=all.find(function(c){return c.id===id;});
-  if(!card||card.matched)return;
-  if(!pS.sel){pS.sel=card;render();return;}
-  if(pS.sel.id===id){pS.sel=null;render();return;}
-  var a=pS.sel,b=card;
-  if(a.match===b.id){a.matched=true;b.matched=true;pS.score++;pS.sel=null;save();buildSidebar();render();}
-  else{pS.wf=a.id;pS.sel=null;render();setTimeout(function(){pS.wf=null;render();},400);}
-}
+function selP(id){var all=pS.lug.concat(pS.eng),card=all.find(function(c){return c.id===id;});if(!card||card.matched)return;if(!pS.sel){pS.sel=card;render();return;}if(pS.sel.id===id){pS.sel=null;render();return;}var a=pS.sel,b=card;if(a.match===b.id){a.matched=true;b.matched=true;pS.score++;pS.sel=null;save();buildSidebar();render();}else{pS.wf=a.id;pS.sel=null;render();setTimeout(function(){pS.wf=null;render();},400);}}
 
 function initF(){var s=FILL[currentCat]||[];fS={sentences:s.slice().sort(function(){return Math.random()-.5;}),i:0,score:0,ans:false};}
 function renderFill(words){
@@ -395,21 +589,127 @@ function nextF(){fS.i++;fS.ans=false;render();}
 function renderStory(){
   if(!storyState.cat){
     var h='<div class="story-picker">';
-    CATS.forEach(function(c){var s=STORIES[c.id];if(!s)return;h+='<div class="story-card" onclick="openStory(\''+c.id+'\')"><div class="s-emoji">'+s.emoji+'</div><div class="s-title">'+s.title+'</div><div class="s-desc">'+c.label+'</div></div>';});
+    CATS.forEach(function(c){if(c.isSong)return;var s=STORIES[c.id];if(!s)return;h+='<div class="story-card" onclick="openStory(\''+c.id+'\')"><div class="s-emoji">'+s.emoji+'</div><div class="s-title">'+s.title+'</div><div class="s-desc">'+c.label+'</div></div>';});
     return h+'</div>';
   }
   var s=STORIES[storyState.cat];
   if(!s)return'<div class="empty">No story yet.</div>';
-  var html=s.text.replace(/<w l="([^"]+)" e="([^"]+)">([^<]+)<\/w>/g,function(m,l,e,d){
-    var sl=l.replace(/'/g,"\\'"),se=e.replace(/'/g,"\\'");
-    return'<span class="sw" onclick="revealW(this,\''+sl+'\',\''+se+'\')">'+d+'<span class="tooltip">'+e+'</span></span>';
-  });
-  var gl=[];var re=/<w l="([^"]+)" e="([^"]+)">/g,m;while((m=re.exec(s.text))!==null){if(!gl.find(function(g){return g.l===m[1];}))gl.push({l:m[1],e:m[2]});}
+  var html=s.text.replace(/<w l="([^"]+)" e="([^"]+)">([^<]+)<\/w>/g,function(m,l,e,d){var sl=l.replace(/'/g,"\\'"),se=e.replace(/'/g,"\\'");return'<span class="sw" onclick="revealW(this,\''+sl+'\',\''+se+'\')">'+d+'<span class="tooltip">'+e+'</span></span>';});
+  var gl=[];var re=/<w l="([^"]+)" e="([^"]+)">/g,m2;while((m2=re.exec(s.text))!==null){if(!gl.find(function(g){return g.l===m2[1];}))gl.push({l:m2[1],e:m2[2]});}
   var gh=gl.map(function(g){return'<div class="gi"><div class="gl">'+g.l+'</div><div class="ge">'+g.e+'</div></div>';}).join('');
-  return'<div class="story-wrap"><div class="story-reader"><div class="story-hdr"><div class="story-title">'+s.emoji+' '+s.title+'</div><button class="back-btn" onclick="storyState.cat=null;render()">&#8592; All stories</button></div><div class="story-text">'+html+'</div><div class="story-legend">&#128161; <strong>Tap the highlighted words</strong> to reveal their meaning!</div><div class="glossary">'+gh+'</div></div></div>';
+  return'<div><div class="story-reader"><div class="story-hdr"><div class="story-title">'+s.emoji+' '+s.title+'</div><button class="back-btn" onclick="storyState.cat=null;render()">&#8592; All stories</button></div><div class="story-text">'+html+'</div><div class="story-legend">&#128161; <strong>Tap the highlighted words</strong> to reveal their meaning!</div><div class="glossary">'+gh+'</div></div></div>';
 }
 function openStory(id){storyState.cat=id;render();}
 function revealW(el,l,e){el.classList.toggle('revealed');learned.add(currentCat+':'+l);save();buildSidebar();}
+
+// SONGS
+function renderSongs(){
+  var content=document.getElementById('content');
+  if(!songState.song){
+    var h='<div class="content-hdr"><h1 class="content-title">🎵 Songs</h1><p class="content-desc">3 original Swahili songs — learn vocabulary through music</p></div>';
+    h+='<div class="song-picker">';
+    SONGS.forEach(function(s){
+      h+='<div class="song-pick-card" onclick="openSong(\''+s.id+'\')"><div class="sp-emoji">'+s.emoji+'</div><div class="sp-title">'+s.title+'</div><div class="sp-theme">'+s.theme+'</div><div class="sp-badge">'+s.tempo+'</div></div>';
+    });
+    content.innerHTML=h+'</div>';
+    return;
+  }
+  var song=SONGS.find(function(s){return s.id===songState.song;});
+  if(!song){content.innerHTML='<div class="empty">Song not found.</div>';return;}
+
+  // Flatten all lines for play-through
+  var allLines=[];
+  song.sections.forEach(function(sec){sec.lines.forEach(function(line){allLines.push(line);});});
+
+  var h='<div class="songs-page"><div class="song-reader">';
+  h+='<div class="song-header">';
+  h+='<button class="song-back" onclick="songState.song=null;stopSong();renderSongs()">&#8592; Songs</button>';
+  h+='<h2>'+song.emoji+' '+song.title+'</h2>';
+  h+='<div class="sh-theme">'+song.theme+' &nbsp;·&nbsp; '+song.tempo+'</div>';
+  h+='<div class="song-controls">';
+  h+='<button class="song-btn song-btn-play" id="play-btn" onclick="playSong(\''+song.id+'\')">&#9654; Read aloud line by line</button>';
+  h+='<button class="song-btn song-btn-stop" onclick="stopSong()">&#9646;&#9646; Stop</button>';
+  h+='</div></div>';
+  h+='<div class="song-body">';
+
+  var lineCounter=0;
+  song.sections.forEach(function(sec){
+    h+='<div class="song-section-label">'+sec.label+'</div>';
+    sec.lines.forEach(function(line){
+      var li=lineCounter;
+      var wh=line.words.map(function(wp){var parts=wp.split('=');var sw2=parts[0],en2=parts[1]||'';var k='songs:'+sw2;return'<span class="word-chip'+(learned.has(k)?' learned-chip':'')+'" onclick="learnSongWord(\''+sw2.replace(/'/g,"\\'")+'\',\''+en2.replace(/'/g,"\\'")+'\',this)">'+sw2+' = '+en2+'</span>';}).join('');
+      h+='<div class="song-line" id="sl-'+li+'" onclick="speakLine(\''+line.sw.replace(/'/g,"\\'")+'\')">'
+        +'<div class="line-num">'+(li+1)+'</div>'
+        +'<button class="line-play" onclick="event.stopPropagation();speakLine(\''+line.sw.replace(/'/g,"\\'")+'\')">&#9654;</button>'
+        +'<div class="line-content">'
+        +'<div class="line-swahili">'+line.sw+'</div>'
+        +'<div class="line-english">'+line.en+'</div>'
+        +'<div class="line-words">'+wh+'</div>'
+        +'</div></div>';
+      lineCounter++;
+    });
+  });
+
+  h+='<div class="song-vocab"><h3>Vocabulary in this song</h3><div class="vocab-grid">';
+  song.vocab.forEach(function(v){
+    var k='songs:'+v.sw;
+    h+='<div class="vocab-chip'+(learned.has(k)?' vc-learned':'')+'" onclick="learnSongWord(\''+v.sw.replace(/'/g,"\\'")+'\',\''+v.en.replace(/'/g,"\\'")+'\',this)">'
+      +'<div class="vc-sw">'+v.sw+'</div>'
+      +'<div class="vc-en">'+v.en+'</div>'
+      +'</div>';
+  });
+  h+='</div></div>';
+  h+='</div></div></div>';
+  content.innerHTML=h;
+}
+
+function openSong(id){songState.song=id;stopSong();renderSongs();}
+
+function learnSongWord(sw,en,el){
+  var k='songs:'+sw;
+  if(learned.has(k)){learned.delete(k);el.classList.remove('learned-chip');el.classList.remove('vc-learned');}
+  else{learned.add(k);el.classList.add('learned-chip');el.classList.add('vc-learned');}
+  save();buildSidebar();
+}
+
+function speakLine(text){
+  speak(text,0.75);
+  // Highlight currently speaking line by text match
+}
+
+var playQueue=[];
+function playSong(songId){
+  stopSong();
+  var song=SONGS.find(function(s){return s.id===songId;});
+  if(!song)return;
+  playQueue=[];
+  var idx=0;
+  song.sections.forEach(function(sec){sec.lines.forEach(function(line){playQueue.push({text:line.sw,idx:idx});idx++;});});
+  playNextLine(0);
+}
+function playNextLine(i){
+  if(i>=playQueue.length){clearHighlight();return;}
+  clearHighlight();
+  var item=playQueue[i];
+  var el=document.getElementById('sl-'+item.idx);
+  if(el){el.classList.add('playing');el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(item.text);
+  var v=window.speechSynthesis.getVoices(),s=v.find(function(x){return x.lang.startsWith('sw');});
+  if(s)u.voice=s;
+  u.rate=0.78;u.pitch=1.0;
+  u.onend=function(){
+    playState.timeout=setTimeout(function(){playNextLine(i+1);},600);
+  };
+  window.speechSynthesis.speak(u);
+}
+function stopSong(){
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  if(playState.timeout)clearTimeout(playState.timeout);
+  clearHighlight();
+}
+function clearHighlight(){document.querySelectorAll('.song-line.playing').forEach(function(el){el.classList.remove('playing');});}
 
 function complete(game,score,total,restart){
   var pct=Math.round(score/total*100),e=pct>=80?'&#127942;':pct>=50?'&#127775;':'&#128170;';
